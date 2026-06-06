@@ -1,3 +1,6 @@
+// Trabalho da matéria Introdução a Algoritmos feito pelas alunas Gabrielly Oliveira e
+// Rayssa Carasilo - Sistemas de Informações FASE 1.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -10,9 +13,11 @@ int randomInt(int n) {
 }
 
 int main() {
-    int i, npro, ncli;
+    int i;
+    int npro, ncli;
     int compra[CLIENTES];
     float preco[PRODUTOS];
+    float total = 0.0;
 
     srand(time(NULL));
 
@@ -28,10 +33,19 @@ int main() {
         compra[i] = randomInt(npro);
     }
 
+    printf("=== PRODUTOS ===\n");
+    for (i = 0; i < npro; i++) {
+        printf("Produto %d -> R$ %.2f\n", i, preco[i]);
+    }
+
+    printf("\n=== COMPRAS DOS CLIENTES ===\n");
     for (i = 0; i < ncli; i++) {
         printf("Cliente %d comprou o produto %d por R$ %.2f\n",
                i, compra[i], preco[compra[i]]);
+        total += preco[compra[i]];
     }
+
+    printf("\nTotal vendido no dia: R$ %.2f\n", total);
 
     return 0;
 }
