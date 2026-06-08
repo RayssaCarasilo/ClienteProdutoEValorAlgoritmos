@@ -14,7 +14,8 @@ Professor: Alessandro Brassanini
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
+#include <unistd.h>
+#include <locale.h>
 
 #define PRODUTOS 200
 #define CLIENTES 50
@@ -26,7 +27,7 @@ int aleatorio(int n)
 
 int main(int args, char *arg[])
 {
-    SetConsoleOutputCP(65001);
+    setlocale(LC_ALL, "");
     int i, p, npro, ncli; // npro = número de produtos, ncli = número de clientes
 
     int comprar[CLIENTES];
@@ -50,7 +51,7 @@ int main(int args, char *arg[])
         }
         printf(" %c", frame);
         fflush(stdout);
-        Sleep(150);
+        usleep(150000);
         printf("\b\b");
     }
     printf(" Pronto!\n\n");
