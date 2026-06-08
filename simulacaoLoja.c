@@ -37,14 +37,21 @@ int main(int args, char *arg[])
     srand((unsigned)time(NULL)); // Semente para geração de números aleatórios
 
     // Animação de carregamento
-    char *frames[] = {"|  ", "/  ", "-  ", "\\  "};
+    char frame;
     printf("Carregando total de vendas...");
     for (i = 0; i < 16; i++)
     {
-        printf(" %s", frames[i % 4]);
+        switch (i % 4)
+        {
+            case 0: frame = '|'; break;
+            case 1: frame = '/'; break;
+            case 2: frame = '-'; break;
+            case 3: frame = '\\'; break;
+        }
+        printf(" %c", frame);
         fflush(stdout);
         Sleep(150);
-        printf("\b\b\b\b");
+        printf("\b\b");
     }
     printf(" Pronto!\n\n");
 
@@ -98,6 +105,8 @@ int main(int args, char *arg[])
     if (resposta == 's' || resposta == 'S')
     {
         main(args, arg); // Reinicia a simulação
+    }else{
+        printf("Obrigada por utilizar nossa simulação! Até a próxima.\n");
     }
     return 0;
 }
